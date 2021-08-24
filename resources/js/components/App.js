@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import ReactDOM from "react-dom";
 
 export default function App() {
@@ -6,7 +6,7 @@ export default function App() {
         <div>
             <h1>Hello worlds</h1>
         </div>
-    )
+    );
 }
 
 if (document.getElementById("main")) {

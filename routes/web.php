@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Playground;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+    
+    Route::get('/playground', [Playground::Class, 'index']);
 });
+
+

@@ -13,3 +13,5 @@ require("./bootstrap");
  */
 
 require("./components/App");
+require("./components/Playground");
+require("./components/Navigation/NavBar");
