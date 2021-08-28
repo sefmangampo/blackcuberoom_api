@@ -42,7 +42,27 @@ var IsNavBarWhite = /*#__PURE__*/function () {
 var isNavBarWhite = new IsNavBarWhite();
 var firstLoad = true;
 
-var setObservers = function setObservers() {
+function enterScreen(section) {
+  var playground = true;
+  var about = true;
+  var contact = true;
+
+  if (section === "playground" && playground) {
+    playground = !playground;
+  }
+
+  if (section === "about" && about) {
+    $(".skills-container, .exp-container").addClass("enterScreen");
+    about = !about;
+  }
+
+  if (section === "contact" && contact) {
+    $(".contact-title, .contact-contents").addClass("enterScreen");
+    contact = !contact;
+  }
+}
+
+function setObservers() {
   var options = {
     threshold: 0.25,
     rootMargin: "-100px"
@@ -91,6 +111,8 @@ var setObservers = function setObservers() {
       }
 
       if (isIntersecting) {
+        enterScreen(target.id);
+
         if (target.id === "playground" || target.id === "contact") {
           isNavBarWhite.setIsBlack();
           if (!navItems.hasClass("inverse")) navItems.addClass("inverse");
@@ -104,7 +126,7 @@ var setObservers = function setObservers() {
   sections.map(function (index, section) {
     observer.observe(section);
   });
-};
+}
 
 var hideDrawerOnAction = function hideDrawerOnAction(_ref2) {
   var matches = _ref2.matches;
@@ -194,7 +216,7 @@ function showToast(message) {
     text: message,
     icon: "info",
     loader: false,
-    position: "top-center"
+    position: "bottom-center"
   });
   setTimeout(function () {
     toast.reset("all");
@@ -211,7 +233,6 @@ function setClipboardButtons() {
     showToast("number copied to clipboard");
   });
   $(".contact-location").on("click", function (e) {
-    navigator.clipboard.writeText("+639760076786");
     window.location.href = "https://goo.gl/maps/DQPJE6F3Xyydq2q99";
   });
 }

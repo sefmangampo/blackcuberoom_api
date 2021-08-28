@@ -94,10 +94,11 @@
     <section id="home">
         <div class="home-section">
             <div class="home-content">
-                <p class="hello">
-                    <span>Hello, I'm sef</span>
-                    <span>A web developer</span>
-                </p>
+                <div class="hello">
+                    <span class="hello-i-am">Hi, I am</span>
+                    <span class="sef">SEF</span>
+                    <span class="web-dev">A web developer</span>
+                </div>
                 <svg
                     class="home-svg"
                     id="visual"
@@ -138,15 +139,72 @@
         </div>
     </section>
     <section id="playground">
-        <h3>playground</h3>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui dicta,
-            incidunt dignissimos neque ducimus vel.
-        </p>
+        <div class="playground-section">
+            <div class="playground-content">
+                <div class="playground-title">Projects</div>
+                <table class="table table-dark">
+                    <thead>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Desc</th>
+                        <th scope="col">Link</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Covid</td>
+                            <td>Charts</td>
+                            <td> <div class="btn btn-link">Go</div> </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Test</td>
+                            <td>Test</td>
+                            <td> <div class="btn btn-link">Go</div> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </section>
     <section id="about">
         <div class="about-section">
-            <div class="about-contents">ABOUT ME</div>
+            <div class="about-me"><span>ABOUT ME</span></div>
+            <div class="about-contents">
+                <div class="skills-container">
+                    <div class="about-contents-text">Skills</div>
+                    <ul class="skills-list">
+                        <li>
+                            <p>Javascript - React, C#, OOP languages</p>
+                            <p>CSS - Sass, Scss</p>
+                        </li>
+                        <li>Laravel, RoR, Node Express</li>
+                        <li>Relational DBs - MySQL, MsSQL, PlSQL</li>
+                        <li>Git, Figma, Confluence, Jira, Agile</li>
+                    </ul>
+                </div>
+
+                <div class="exp-container">
+                    <div class="about-contents-text">Experiences</div>
+                    <ul>
+                        <li>
+                            Assoc. Research Developer - Adv World Solutions
+                            (Mkti) [2020-2021]
+                        </li>
+                        <li>
+                            Support Developer - DevSoft PH (Ortigas) [2019-2020]
+                        </li>
+                        <li>
+                            Senior Software Developer - Jeonsoft Corp (QC)
+                            [2017-2019]
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="btn btn-primary more-details">
+                    <span>More Details</span>
+                </div>
+            </div>
         </div>
     </section>
     <section id="contact">

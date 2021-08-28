@@ -20,7 +20,27 @@ const isNavBarWhite = new IsNavBarWhite();
 
 let firstLoad = true;
 
-const setObservers = () => {
+function enterScreen(section) {
+    let playground = true;
+    let about = true;
+    let contact = true;
+
+    if (section === "playground" && playground) {
+        playground = !playground;
+    }
+
+    if (section === "about" && about) {
+        $(".skills-container, .exp-container").addClass("enterScreen");
+        about = !about;
+    }
+
+    if (section === "contact" && contact) {
+        $(".contact-title, .contact-contents").addClass("enterScreen");
+        contact = !contact;
+    }
+}
+
+function setObservers() {
     const options = {
         threshold: 0.25,
         rootMargin: "-100px",
@@ -79,6 +99,8 @@ const setObservers = () => {
             }
 
             if (isIntersecting) {
+                enterScreen(target.id);
+
                 if (target.id === "playground" || target.id === "contact") {
                     isNavBarWhite.setIsBlack();
                     if (!navItems.hasClass("inverse"))
@@ -95,7 +117,7 @@ const setObservers = () => {
     sections.map((index, section) => {
         observer.observe(section);
     });
-};
+}
 
 const hideDrawerOnAction = ({ matches }) => {
     let scrollDebounce = true;
@@ -196,7 +218,7 @@ function showToast(message) {
         text: message,
         icon: "info",
         loader: false,
-        position: "top-center",
+        position: "bottom-center",
     });
 
     setTimeout(() => {
@@ -215,7 +237,6 @@ function setClipboardButtons() {
     });
 
     $(".contact-location").on("click", (e) => {
-        navigator.clipboard.writeText("+639760076786");
         window.location.href = "https://goo.gl/maps/DQPJE6F3Xyydq2q99";
     });
 }
