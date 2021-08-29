@@ -1,4 +1,14 @@
-@extends('welcome') @section('content')
+@extends('welcome') @push('styles')
+<link href="/css/views/home.css" rel="stylesheet" />
+@endpush @push('scripts')
+<script src="/js/blade/home.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"
+    integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+></script>
+@endpush @section('content')
 <div class="home-container">
     <header>
         <input type="checkbox" class="nav-toggle" id="nav-toggle" />
@@ -154,13 +164,13 @@
                             <th scope="row">1</th>
                             <td>Covid</td>
                             <td>Charts</td>
-                            <td> <div class="btn btn-link">Go</div> </td>
+                            <td><div class="btn btn-link">Go</div></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
                             <td>Test</td>
                             <td>Test</td>
-                            <td> <div class="btn btn-link">Go</div> </td>
+                            <td><div class="btn btn-link">Go</div></td>
                         </tr>
                     </tbody>
                 </table>
@@ -201,9 +211,11 @@
                     </ul>
                 </div>
 
+                <a href="/about" class="more-details">
                 <div class="btn btn-primary more-details">
                     <span>More Details</span>
                 </div>
+            </a>
             </div>
         </div>
     </section>
@@ -232,12 +244,5 @@
         </div>
     </section>
 </div>
-<script src="/js/blade/home.js"></script>
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"
-    integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-></script>
 
 @endsection

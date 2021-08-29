@@ -135,6 +135,8 @@
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/blade/manifest": 0,
+/******/ 			"css/views/home": 0,
+/******/ 			"css/views/about": 0,
 /******/ 			"css/app": 0
 /******/ 		};
 /******/ 		

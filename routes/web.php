@@ -18,6 +18,11 @@ Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function (
         return view('home');
     });
     
+
+    Route::get('/about', function () {
+        return view('about');
+    });
+
     Route::get('/playground', [Playground::Class, 'index']);
 });
 

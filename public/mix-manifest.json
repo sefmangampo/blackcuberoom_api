@@ -1,8 +1,11 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/bootstrap.js": "/js/bootstrap.js",
+    "/js/blade/about.js": "/js/blade/about.js",
     "/js/blade/home.js": "/js/blade/home.js",
     "/js/blade/manifest.js": "/js/blade/manifest.js",
+    "/css/views/home.css": "/css/views/home.css",
+    "/css/views/about.css": "/css/views/about.css",
     "/css/app.css": "/css/app.css",
     "/js/blade/vendor.js": "/js/blade/vendor.js"
 }
