@@ -21,9 +21,11 @@
         <script src="/js/blade/manifest.js"></script>
         <script src="/js/blade/vendor.js"></script>
         <script src="/js/bootstrap.js"></script>
+        @livewireStyles
     </head>
     <body class="antialiased dx-viewport">
-        @include('includes.header') @yield('content')
-        @include('includes.footer') @stack('scripts')
+        @yield('content')
+        @stack('scripts')
+        @livewireScripts
     </body>
 </html>
