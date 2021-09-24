@@ -69,14 +69,14 @@
                     </li>
                 </ul>
                 <ul>
-                    <li>
-                        <a href="/playground">
+                    {{-- <li>
+                        <a href="/blog">
                             <div class="link-label">
                                 <i class="bi bi-pencil"></i>
                                 <span>Blog</span>
                             </div></a
                         >
-                    </li>
+                    </li> --}}
                     {{--
                     <li><a href="/playground">Random tinkerings</a></li>
                     --}}
@@ -151,7 +151,7 @@
     <section id="playground">
         <div class="playground-section">
             <div class="playground-content">
-                <div class="playground-title">Projects</div>
+                <div class="playground-title">PROJECTS</div>
                 <table class="table table-dark">
                     <thead>
                         <th scope="col">#</th>
@@ -160,18 +160,15 @@
                         <th scope="col">Link</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Covid</td>
-                            <td>Charts</td>
-                            <td><div class="btn btn-link">Go</div></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Test</td>
-                            <td>Test</td>
-                            <td><div class="btn btn-link">Go</div></td>
-                        </tr>
+
+                        @foreach ( $playgrounds as $x )
+                            <tr>
+                                <th scope="row">{{$x->id}}</th>
+                                <td>{{$x->name}}</td>
+                                <td>{{$x->description}}</td>
+                                <td><div data-link={{$x->link}} class="playground-link btn btn-primary">Go</div></td>  
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -185,29 +182,18 @@
                     <div class="about-contents-text">Skills</div>
                     <ul class="skills-list">
                         <li>
-                            <p>Javascript - React, C#, OOP languages</p>
-                            <p>CSS - Sass, Scss</p>
-                        </li>
-                        <li>Laravel, RoR, Node Express</li>
-                        <li>Relational DBs - MySQL, MsSQL, PlSQL</li>
-                        <li>Git, Figma, Confluence, Jira, Agile</li>
+                        @foreach ( $skills as $skill )
+                            <li>{{$skill->name}}</li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="exp-container">
                     <div class="about-contents-text">Experiences</div>
                     <ul>
-                        <li>
-                            Assoc. Research Developer - Adv World Solutions
-                            (Mkti) [2020-2021]
-                        </li>
-                        <li>
-                            Support Developer - DevSoft PH (Ortigas) [2019-2020]
-                        </li>
-                        <li>
-                            Senior Software Developer - Jeonsoft Corp (QC)
-                            [2017-2019]
-                        </li>
+                        @foreach ( $exps as $exp )
+                            <li>{{$exp->jobtitle}} - {{$exp->company}} ({{$exp->location}}) [{{$exp->dateofwork}}]</li>
+                        @endforeach
                     </ul>
                 </div>
 
@@ -222,22 +208,33 @@
     <section id="contact">
         <div class="contact-section">
             <div class="contact-title">
-                <span>Contact Me </span>
+                <span>CONTACT </span>
                 <hr />
                 <p>As of <span class="date-available"></span></p>
-                <p class="is-available"></p>
+                <p>
+                    @if ($details->isavailableforwork === 1)
+                        I am available for work
+                    @else
+                        I am not available for work
+                    @endif
+                </p>
             </div>
-            <div class="contact-contents">
+            <div class="contact-contents"
+                data-email-head="{{$details->emailhead}}"
+                data-email-domain="{{$details->emaildomain}}"
+                data-phone-number="{{$details->phonenumber}}"
+                data-geolocation="{{$details->coordinates}}"
+            >
                 <div class="contact-details">
-                    <span>sefmangampo<i class="bi bi-at"></i>gmail.com</span>
+                    <span> {{$details->emailhead}}<i class="bi bi-at"></i>{{$details->emaildomain}}.com</span>
                     <i class="bi bi-clipboard contact-email"></i>
                 </div>
                 <div class="contact-details">
-                    <span> (+63)9760076786</span>
+                    <span> {{$details->phonenumber}}</span>
                     <i class="bi bi-clipboard contact-number"></i>
                 </div>
                 <div class="contact-details">
-                    <span> Antipolo, Rizal PH</span>
+                    <span> {{$details->address}}</span>
                     <i class="bi bi-geo-alt contact-location"></i>
                 </div>
             </div>

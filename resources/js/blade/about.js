@@ -1,9 +1,9 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 
-import TabPanel from "devextreme-react/tab-panel";
+const TabPanel = lazy(() => import("devextreme-react/tab-panel"));
 import Toolbar, { Item } from "devextreme-react/toolbar";
-import Button from "devextreme-react/button";
+const Button = lazy(() => import("devextreme-react/button"));
 
 import Experience from "../components/Experience";
 import Skills from "../components/Skills";
@@ -37,34 +37,37 @@ const redirectToBlog = () => (window.location.href = "/blog");
 const App = () => {
     return (
         <>
-            <Toolbar>
-                <Item
-                    location="before"
-                    widget="dxButton"
-                    options={backButtonOptions}
-                />
-                <Item location="after">
-                    <Button
-                        onClick={redirectToBlog}
-                        component={renderforwardButton}
-                        stylingMode="text"
-                        type="default"
+            <Suspense fallback={<div>Loading...</div>}>
+                <Toolbar>
+                    <Item
+                        location="before"
+                        widget="dxButton"
+                        options={backButtonOptions}
                     />
-                </Item>
-                <Item location="center" render={renderLabel} />
-            </Toolbar>
-            <TabPanel swipeEnabled={false}>
-                <Item
-                    title="Experience"
-                    component={renderExperienceAccordion}
-                />
-                <Item title="Skills" component={renderSkillsTreeList} />
-                <Item title="Personal" component={renderPersonalInfo} />
-            </TabPanel>
+                    {/* <Item location="after">
+                        <Button
+                            onClick={redirectToBlog}
+                            component={renderforwardButton}
+                            stylingMode="text"
+                            type="default"
+                        />
+                    </Item> */}
+                    <Item location="center" render={renderLabel} />
+                </Toolbar>
+                <TabPanel swipeEnabled={false}>
+                    <Item
+                        title="Experience"
+                        component={renderExperienceAccordion}
+                    />
+                    <Item title="Skills" component={renderSkillsTreeList} />
+                    <Item title="Personal" component={renderPersonalInfo} />
+                </TabPanel>
+            </Suspense>
         </>
     );
 };
 
 export default App;
+const el = document.getElementById("aboutBody");
 
-ReactDOM.render(<App />, document.getElementById("aboutBody"));
+ReactDOM.render(<App />, el);

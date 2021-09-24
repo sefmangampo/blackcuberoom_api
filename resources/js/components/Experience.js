@@ -1,33 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import Accordion from "devextreme-react/accordion";
-
-const experienceList = [
-    {
-        id: 0,
-        jobtitle: "Senior Software Developer",
-        location: "Quezon City",
-        company: "Jeonsoft Corporation",
-        years: "2017-2019",
-        roles: ["asdasd", "asdasdad"],
-    },
-    {
-        id: 1,
-        jobtitle: "Support Developer",
-        location: "Ortigas, Pasig",
-        years: "2019-2020",
-        company: "Devsoft PH",
-        roles: ["basava"],
-    },
-    {
-        id: 3,
-        jobtitle: "Associate Research Developer",
-        location: "Ayala Ave, Makati",
-        years: "2020-2021",
-        company: "Advance World Solutions, Inc",
-        roles: ["aadada", "asdadsa", "adadada"],
-    },
-];
 
 const renderBody = ({ data }) => {
     return (
@@ -43,15 +17,18 @@ const renderBody = ({ data }) => {
                 </div>
                 <div className="item-field">
                     <div className="years-label">Years:</div>
-                    <div className="years-field">{data.years}</div>
+                    <div className="years-field">{data.dateofwork}</div>
                 </div>
                 <div className="item-field-wide">
                     <div className="roles-label">Roles:</div>
                     <ul>
                         {data.roles.map((role, idx) => {
                             return (
-                                <li key={idx} className="roles-field">
-                                    {role}
+                                <li
+                                    key={`${data.location}-${idx}`}
+                                    className="roles-field"
+                                >
+                                    {role.role}
                                 </li>
                             );
                         })}
@@ -65,16 +42,39 @@ const renderBody = ({ data }) => {
 const renderTitle = ({ data }) => {
     return (
         <div className="item-title">
-            <span>{`${data.jobtitle} (${data.years})`}</span>
+            <span>{`${data.jobtitle} (${data.dateofwork})`}</span>
         </div>
     );
 };
 
 const Experience = () => {
+    const [exp, setExp] = useState();
+
+    const getExperiences = async () => {
+        const _exp = await axios.get("/experiences");
+        const _roles = await axios.get("/roles");
+
+        const d = [];
+
+        _exp.data.map((e) => {
+            d.push({
+                ...e,
+                roles: _roles.data.filter((x) => x.companyid == e.id),
+            });
+        });
+
+        setExp(d);
+    };
+
+    useEffect(() => {
+        getExperiences();
+    }, []);
+
     return (
         <>
             <Accordion
-                dataSource={experienceList.reverse()}
+                dataSource={exp}
+                key="id"
                 multiple={true}
                 collapsible={true}
                 animationDuration={300}

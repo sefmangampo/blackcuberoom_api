@@ -4,6 +4,8 @@
     "/js/blade/about.js": "/js/blade/about.js",
     "/js/blade/blog.js": "/js/blade/blog.js",
     "/js/blade/home.js": "/js/blade/home.js",
+    "/js/blade/login.js": "/js/blade/login.js",
+    "/js/blade/reactblog.js": "/js/blade/reactblog.js",
     "/js/blade/manifest.js": "/js/blade/manifest.js",
     "/css/views/home.css": "/css/views/home.css",
     "/css/views/blog.css": "/css/views/blog.css",

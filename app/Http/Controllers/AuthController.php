@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Iluminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
@@ -54,5 +54,13 @@ class AuthController extends Controller
 
     public function me(Request $request){
         return $request->user();
+    }
+
+    public function logout(){
+        auth()->user()->tokens()->delete();
+
+        return [
+            'message' => 'Tokens Revoked'
+        ];
     }
 }

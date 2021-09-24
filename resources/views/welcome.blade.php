@@ -6,6 +6,7 @@
 
         <title>Black Cube Room</title>
         <link rel="preload" as="image" href="/images/black_cat_right.jpeg" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css"
@@ -22,10 +23,10 @@
         <script src="/js/blade/vendor.js"></script>
         <script src="/js/bootstrap.js"></script>
         @livewireStyles
+        @livewireScripts
     </head>
     <body class="antialiased dx-viewport">
         @yield('content')
         @stack('scripts')
-        @livewireScripts
     </body>
 </html>

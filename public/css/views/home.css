@@ -247,7 +247,6 @@ section#contact {
   grid-column: 1/2;
   z-index: 99;
   position: relative;
-  border-radius: 4px;
   display: grid;
   grid-template-rows: 1fr 3fr;
   grid-template-columns: 1fr 2fr;
@@ -310,7 +309,7 @@ section#contact {
   font-weight: bold;
   color: #CCC;
   flex-direction: column;
-  margin: 0.5em;
+  margin: 1em;
   position: relative;
 }
 
@@ -325,7 +324,6 @@ section#contact {
   height: 100%;
   width: 100%;
   left: 0;
-  border-radius: 1em;
   top: 0;
   position: absolute;
   content: "";
@@ -374,10 +372,7 @@ section#contact {
   position: relative;
   color: #3490dc;
   margin-bottom: 1em;
-  border-radius: 1em;
   z-index: 30;
-  box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
 }
 
 .contact-details::after {
@@ -408,12 +403,14 @@ section#contact {
   color: #3490dc;
 }
 
+.btn {
+  border-radius: 0px;
+}
+
 .contact-title {
   color: #3490dc;
   margin-bottom: 1em;
   z-index: 30;
-  box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
   font-size: clamp(1.5rem, 1.5vw, 2rem);
   position: relative;
   width: calc(100vw - 2em);
@@ -460,6 +457,7 @@ section#contact {
 }
 
 .about-section {
+  padding-top: 2em;
   height: calc(100vh - 60px);
   top: 60px;
   width: 100vw;
@@ -523,8 +521,8 @@ section#contact {
 
 .more-details {
   position: absolute;
-  bottom: 3em;
-  right: 2em;
+  bottom: 2em;
+  right: 1em;
   width: 10em;
   height: 3em;
   display: flex;
@@ -541,6 +539,7 @@ section#contact {
   height: calc(100vh - 60px);
   top: 60px;
   width: 100vw;
+  padding-top: 4em;
   position: relative;
   font-family: monospace;
 }
@@ -675,7 +674,6 @@ section#contact {
     content: "";
     box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.05);
     filter: blur(10px);
-    border-radius: 100px;
   }
 
   .ilike {
@@ -694,7 +692,6 @@ section#contact {
     width: -moz-fit-content;
     width: fit-content;
     max-width: 50ch;
-    border-radius: 5px;
     padding: 0.25em;
   }
 
@@ -738,7 +735,6 @@ section#contact {
     grid-column: 2/2;
     align-self: center;
     color: #3490dc;
-    border-radius: 5px;
     position: relative;
     width: unset;
     margin: unset;
@@ -754,7 +750,6 @@ section#contact {
     height: 100%;
     position: absolute;
     width: 100%;
-    border-radius: 15px;
   }
 
   .contact-contents {
@@ -768,7 +763,6 @@ section#contact {
   .contact-details {
     width: 400px;
     padding-left: 0.5em;
-    border-radius: 0.3em;
     min-width: 310px;
     margin: unset;
   }
@@ -786,7 +780,6 @@ section#contact {
   .skills-container, .exp-container {
     padding: 0.5em;
     margin: 0.5rem;
-    border-radius: 0.5em;
     -webkit-backdrop-filter: blur(2px) saturate(80%) contrast(45%) brightness(80%);
             backdrop-filter: blur(2px) saturate(80%) contrast(45%) brightness(80%);
   }
@@ -845,7 +838,6 @@ section#contact {
     width: 100%;
     height: 100%;
     position: absolute;
-    border-radius: 5px;
     top: 0;
     left: 0;
     -webkit-backdrop-filter: blur(2px) saturate(100%) contrast(75%) brightness(100%);

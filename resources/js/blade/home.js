@@ -228,28 +228,48 @@ function showToast(message) {
 
 function setClipboardButtons() {
     $(".contact-email").on("click", (e) => {
-        navigator.clipboard.writeText("sefmangampo@gmail.com");
+        navigator.clipboard.writeText(email);
         showToast("email copied to clipboard");
     });
     $(".contact-number").on("click", (e) => {
-        navigator.clipboard.writeText("+639760076786");
+        navigator.clipboard.writeText(number);
         showToast("number copied to clipboard");
     });
 
     $(".contact-location").on("click", (e) => {
-        window.location.href = "https://goo.gl/maps/DQPJE6F3Xyydq2q99";
+        window.location.href = coordinates;
     });
 }
+
+let email = "";
+let number = "";
+let coordinates = "";
 
 function setDateAvailable() {
     const date = new Date().toLocaleDateString();
     $(".date-available").text(date);
 }
 
-function setWorkAvailability() {
-    const text = "I am not available for work";
+function getContactDetails() {
+    const contents = $(".contact-contents")[0];
+    const emailHead = contents.dataset.emailHead;
+    const emailDomain = contents.dataset.emailDomain;
+    const geolocation = contents.dataset.geolocation;
+    const phoneNumber = contents.dataset.phoneNumber;
 
-    $(".is-available").text(text);
+    email = `${emailHead}@${emailDomain}.com`;
+    coordinates = geolocation;
+    number = phoneNumber;
+}
+
+function setPlayGroundLinks() {
+    const buttons = $(".playground-link");
+
+    for (let x = 0; x < buttons.length; x++) {
+        $(buttons[x]).on("click", () => {
+            window.location.replace(buttons[x].dataset.link);
+        });
+    }
 }
 
 function initialize() {
@@ -259,7 +279,8 @@ function initialize() {
     removeHashes();
     setClipboardButtons();
     setDateAvailable();
-    setWorkAvailability();
+    getContactDetails();
+    setPlayGroundLinks();
 }
 
 documentReady(initialize);
